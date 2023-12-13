@@ -1,7 +1,21 @@
-import { html, state } from '@beforesemicolon/markup';
-const app = document.getElementById('app');
-const greet = 'Hello world! This is a boilerplate with Markup, tailwind and Vite :)';
+import { html } from '@beforesemicolon/markup';
+import { AppHeader } from './components/AppHeader';
+import { AppFooter } from './components/AppFooter';
+import { Counter } from './components/Counter';
+import { Theme } from './utils/Theme';
 
-html`
-	<h1 class="text-red-500">${greet}</h1>
-`.render(app);
+const app = document.getElementById('app');
+
+const App = () => {
+	return html`
+		<div class="container-sm mx-auto bg-${Theme.App}-900 h-screen text-white text-base">
+			${AppHeader()}
+			<main class="h-full flex justify-center items-center">
+				${Counter()}
+			</main>
+			${AppFooter()}
+		</div>
+	`;
+};
+
+App().render(app);
